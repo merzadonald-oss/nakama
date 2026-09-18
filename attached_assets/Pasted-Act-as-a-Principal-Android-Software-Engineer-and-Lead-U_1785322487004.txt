@@ -1,0 +1,42 @@
+Act as a Principal Android Software Engineer and Lead UI/UX Designer. Build a production-ready Android application named "Nakama".
+
+### APP OVERVIEW
+"Nakama" is a nautical fantasy-themed companion compass app. It connects friends by displaying an animated directional compass card ("Life Tag") pointing toward a friend's location without showing maps or street addresses.
+
+### MAIN FEATURES TO IMPLEMENT
+
+1. Mutual "Life Tag" Pairing:
+   - Generate unique QR code & shareable deep links (e.g., nakama://pair?user_id=XYZ).
+   - Require double-sided mutual consent before location vectors are shared.
+
+2. Compass Directional UI (Core Visual Feature):
+   - A custom interactive UI featuring a nautical compass dial and a floating parchment tag needle.
+   - Combine device SensorManager (Magnetometer + Accelerometer) heading with target bearing calculated from GPS coordinates.
+   - The needle/parchment tag MUST smooth-rotate toward the friend's direction in real time.
+   - Do NOT render any Google Maps or Mapbox tiles. Keep it strictly atmospheric.
+
+3. Optional Distance Reading:
+   - Add a per-friend permission toggle: "Allow Distance Visibility".
+   - Compute distance using the Haversine formula in kilometers (km).
+   - If enabled by the friend, display distance beneath the compass needle (e.g., "14.2 km away").
+   - If disabled, display "Distance Hidden".
+
+4. Crew Management Screen:
+   - View paired friends in a carousel or list.
+   - Tap a friend to load their location vector on the main compass view.
+   - Ability to remove/unpair a friend anytime.
+
+### TECH STACK RECOMMENDATIONS (Use best practices for target environment)
+- Language: Kotlin
+- UI Framework: Jetpack Compose with Material 3 (Custom Nautical/Adventure Theme)
+- Location Services: Google FusedLocationProviderClient
+- Motion/Sensory: Android SensorManager (Rotation Vector Sensor)
+- Backend / Real-time: Supabase or Firebase (Authentication, Firestore/PostgreSQL real-time location websockets)
+- Navigation: Jetpack Navigation Compose
+
+### UI / STYLING DIRECTIVES
+- Color Palette: Ocean Blue (#0D1B2A), Parchment (#F5E6CA), Brass Gold (#C5A059), Dark Red (#8B0000).
+- Visual Style: Clean, modern adventure aesthetic with floating parchment card animations.
+- IMPORTANT: Strictly DO NOT use any trademarked anime artwork, official logos, or copyrighted character names. Use original nautical fantasy terms (e.g., "Life Tag", "Crew", "Compass Vector").
+
+Please generate the modular folder structure, core data models, location/sensor calculations, backend service integration setup, and main Jetpack Compose UI screens to kickstart the project.
